@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "qml"
+version = "0.1.0"
+description = "quantum machine learning research"
+authors = ["Amanda M Turney <amanda.marie.turney@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+qiskit-textbook = {git = "https://github.com/qiskit-community/qiskit-textbook.git", subdirectory = "qiskit-textbook-src"}
+ipykernel = "^6.25.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
