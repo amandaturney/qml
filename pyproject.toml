@@ -9,6 +9,8 @@ readme = "README.md"
 python = "^3.9"
 qiskit-textbook = {git = "https://github.com/qiskit-community/qiskit-textbook.git", subdirectory = "qiskit-textbook-src"}
 ipykernel = "^6.25.1"
+pylatexenc = "^2.10"
+qiskit-aer = "^0.12.2"
 
 
 [build-system]
