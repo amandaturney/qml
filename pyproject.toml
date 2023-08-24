@@ -11,6 +11,7 @@ qiskit-textbook = {git = "https://github.com/qiskit-community/qiskit-textbook.gi
 ipykernel = "^6.25.1"
 pylatexenc = "^2.10"
 qiskit-aer = "^0.12.2"
+tweedledum = "^1.1.1"
 
 
 [build-system]
