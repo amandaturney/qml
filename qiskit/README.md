@@ -2,7 +2,7 @@
 
 This subdirectory contains all the Jupyter notebooks for each of the 5 Qiskit courses listed below:
 
-* Introduction
+* <a href="https://qiskit.org/learn/course/introduction-course ">Introduction</a>
 * Understanding Quantum Information & Computation: Basics of Quantum Information
 * Understanding Quantum Information & Computation: Fundamentals of Quantum Algorithms
 * Variational Algorithm Design
