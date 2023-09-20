@@ -14,6 +14,7 @@ qiskit-aer = "^0.12.2"
 tweedledum = "^1.1.1"
 seaborn = "^0.12.2"
 galois = "^0.3.5"
+qiskit-machine-learning = "^0.6.1"
 
 
 [build-system]
