@@ -1514,6 +1514,22 @@ scipy = ">=1.0"
 dask = ["dask", "distributed"]
 
 [[package]]
+name = "qiskit-algorithms"
+version = "0.2.1"
+description = "Qiskit Algorithms: A library of quantum computing algorithms"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "qiskit-algorithms-0.2.1.tar.gz", hash = "sha256:fa27babdcabb8613f261743d83d915dd624b1d94737b450d9d0427ed36bd187e"},
+    {file = "qiskit_algorithms-0.2.1-py3-none-any.whl", hash = "sha256:4d83b63921c47fe3d9ee2962c0afcfc6009d42f94f23a2e907e5338f98e3e3f7"},
+]
+
+[package.dependencies]
+numpy = ">=1.17"
+qiskit-terra = ">=0.24"
+scipy = ">=1.4"
+
+[[package]]
 name = "qiskit-machine-learning"
 version = "0.6.1"
 description = "Qiskit Machine Learning: A library of quantum computing machine learning experiments"
@@ -2077,6 +2093,29 @@ files = [
 ]
 
 [[package]]
+name = "xarray"
+version = "2023.10.1"
+description = "N-D labeled arrays and datasets in Python"
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "xarray-2023.10.1-py3-none-any.whl", hash = "sha256:71ea549e9be6dfeab19c2736acf659967b861aad2397691a80e5fad0c61db2ad"},
+    {file = "xarray-2023.10.1.tar.gz", hash = "sha256:9eeee170c3fc2f3321eb6ba40c17ffe4d8c98d49d55e4a3fba66a75bdc7dd9e5"},
+]
+
+[package.dependencies]
+numpy = ">=1.22"
+packaging = ">=21.3"
+pandas = ">=1.4"
+
+[package.extras]
+accel = ["bottleneck", "flox", "numbagg", "scipy"]
+complete = ["xarray[accel,io,parallel,viz]"]
+io = ["cftime", "fsspec", "h5netcdf", "netCDF4", "pooch", "pydap", "scipy", "zarr"]
+parallel = ["dask[complete]"]
+viz = ["matplotlib", "nc-time-axis", "seaborn"]
+
+[[package]]
 name = "zipp"
 version = "3.16.2"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -2094,4 +2133,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "2660b4602ea959f63e8b011c528f5f59649191ee1065b7f57a9bcc1f8f27cdca"
+content-hash = "0774b8ab295568e4f123885a4cd4ad495834b61ca49574a9e13b78c78e360876"
