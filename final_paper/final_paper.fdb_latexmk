@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber final_paper"] 1702508167 "final_paper.bcf" "final_paper.bbl" "final_paper" 1702509358 0
+["biber final_paper"] 1702508167 "final_paper.bcf" "final_paper.bbl" "final_paper" 1702514769 0
   "./sample.bib" 1702500198 4263 d4f512480d560b0daf2b1a51627fd826 ""
-  "final_paper.bcf" 1702509357 108850 f4702e0f8a3409b27143bd983b519c02 "pdflatex"
+  "final_paper.bcf" 1702514768 108850 f4702e0f8a3409b27143bd983b519c02 "pdflatex"
   (generated)
   "final_paper.bbl"
   "final_paper.blg"
   (rewritten before read)
-["pdflatex"] 1702509353 "/Users/amandaturney/Documents/School/QML_Research/qml/final_paper/final_paper.tex" "final_paper.pdf" "final_paper" 1702509358 0
-  "/Users/amandaturney/Documents/School/QML_Research/qml/final_paper/final_paper.tex" 1702509348 53392 9f19a85dd6bdbc5af073aa4c58b9b2cc ""
+["pdflatex"] 1702514764 "/Users/amandaturney/Documents/School/QML_Research/qml/final_paper/final_paper.tex" "final_paper.pdf" "final_paper" 1702514769 0
+  "/Users/amandaturney/Documents/School/QML_Research/qml/final_paper/final_paper.tex" 1702514763 56369 2ad469df627c5fce89c206dcd098854a ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -150,22 +150,22 @@
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
   "Figures//Qml_approaches.png" 1702493985 19016 168659704fb27914b22a46375caea061 ""
   "Figures//ansatz.png" 1702496789 18741 af31e47e12ef623f2c14ad865577eafb ""
-  "Figures//colormap_fm1.png" 1702503654 218754 87054d90d5ab4d9b6637370afc33bc9a ""
+  "Figures//colormap_fm1.png" 1702512896 186984 547caff30aa10817e790cb1757778393 ""
   "Figures//colormap_fm2.png" 1702503670 184859 76ec2f8fe6604f43cb1bf73ff5771881 ""
   "Figures//colormap_fm3.png" 1702503683 153302 44ab74a47d2a58ade26a3c92d8ab6425 ""
   "Figures//colormap_fm4.png" 1702503698 178337 22da47662a6e1c0d0b74f9485c0d5a21 ""
   "Figures//colormap_fm5.png" 1702503710 172308 8923edae32bdc1a0c88e6f04e63d87f4 ""
   "Figures//data_encoding.png" 1702496815 19879 fb8b9c250ed55e876df6a2c7500b386f ""
-  "Figures//datasets.png" 1702500099 61708 e3a1eb91d1f5e534c688622f1b071589 ""
+  "Figures//datasets.png" 1702509598 78348 8fc474ee150e2da9232714a65efa280a ""
   "Figures//fm1.png" 1702501887 10853 43e848a4513dffcc7663cb318f2f29d1 ""
   "Figures//qml_general_circuit.png" 1702498274 20008 bfcd58c52f800466a52b5dd64aeb5602 ""
   "Figures//quantum_kernel.png" 1702499786 17136 0b4009b7a1e14d35dc32f8e97ef41d7e ""
   "LTJournalArticle.cls" 1702428119 9784 e38e4f05326438c9cfb0a6c6bf9f0764 ""
-  "final_paper.aux" 1702509357 15207 8bbe90a7d69650daa78fa5257cb4c31e "pdflatex"
+  "final_paper.aux" 1702514768 15381 a418357cd845fe266004a66f203ed442 "pdflatex"
   "final_paper.bbl" 1702508172 22712 4372628aec6cafab7f6e1275b20c2860 "biber final_paper"
-  "final_paper.out" 1702509357 2771 3fe76afb5954501bc20feaca44b44482 "pdflatex"
-  "final_paper.run.xml" 1702509357 2350 e88b9115755839ca30adaa7073240dcf "pdflatex"
-  "final_paper.tex" 1702509348 53392 9f19a85dd6bdbc5af073aa4c58b9b2cc ""
+  "final_paper.out" 1702514768 3289 e395ca2c778c8fa27a830a528e6efc68 "pdflatex"
+  "final_paper.run.xml" 1702514768 2350 e88b9115755839ca30adaa7073240dcf "pdflatex"
+  "final_paper.tex" 1702514763 56369 2ad469df627c5fce89c206dcd098854a ""
   (generated)
   "final_paper.aux"
   "final_paper.bcf"

@@ -67,7 +67,7 @@
 %	ARTICLE CONTENTS
 %----------------------------------------------------------------------------------------
 
-\section{Motivation}
+\section{I. Motivation}
 
 Impressive advances in the fields of data science and artificial intelligence have been made in the last few years by tools such as AlphaFold \autocite{jumper2021highly} 
 for predicting 3D protein structure and ChatGPT \autocite{openai} for programming tasks, generating creative works, and answering questions, among many other applications. As technology 
@@ -80,12 +80,12 @@ While QML has had some success in the fields of chemistry and optimization, it i
 quantum weirdness that is unintuitive to many people. There exist a plethora of online tutorials showing how to programmatically spin up quantum kernels or a quantum neural network, 
 but an analysis of what makes these particular tools successful (especially compared to their classical counterparts) is often elusive. Thus, the aim of this paper is to provide an 
 intuitive guide for readers with a background in data science to understand quantum machine learning and to illustrate how QML works in a fundamentally similar way to classical ML. 
-The goal is to help eliminate some of the mystery of quantumness, to visually explain the power of quantum computing in machine learning tasks, and to improve reader's intuition of 
-when and why to use quantum technologies for a given problem.
+The goal is to help eliminate some of the mystery of quantumness, to visually explain the power of quantum computing in machine learning tasks, and to discuss when and why to use 
+quantum technologies for a given problem.
 
-\section{Quantum Computing Basics Background}
+\section{II. Quantum Computing Basics Background}
 
-\subsection{Qubits}
+\subsection{A. Qubits}
 At the most fundamental level, the smallest piece of information that can be stored and processed by a quantum computer is a qubit. This is the quantum analog to a classical bit. 
 Qubits can be implemented by a number of objects that behave quantumly such as electron orbitals of trapped ions, polarized photons, and spin-½ particles. Like classical bits, 
 qubits can have two orthogonal states detonated by 0 and 1 and these can physically correspond to ground and excited orbitals, horizontal and vertical polarization, or up and down 
@@ -106,7 +106,7 @@ incorrect solutions are never measured at the end of a circuit because they are 
 observed. Equation 1 represents a quantum state in the form known as the Dirac notation but quantum states are also often represented by vectors of length $2^n$ or matrices called 
 density matrices of the shape $2^n$ x $2^n$, where $n$ is the number of qubits.
 
-\subsection{Quantum Operators}
+\subsection{B. Quantum Operators}
 Just as classical computing has gates such as AND, OR, XOR, and NOT, there exists a set of quantum gates that can act on qubits. There are two different groups of gates: single 
 qubit gates and multi-qubit gates. For example, just as the NOT gate acts on a single qubit and negates it, there exists an equivalent quantum operator called the Pauli-X gate. 
 This gate rotates the qubit around the x-axis, resulting in a qubit that was initially in the $\ket{1}$ state to end in the $\ket{0}$ state and a qubit in the $\ket{0}$ state 
@@ -124,7 +124,7 @@ measuring quantum states, although things look classically random (where measure
 in the quantum world that a qubit can transition to and then transition back from. Lastly, while quantum operators can be implemented physically on quantum hardware, they are 
 represented by Hermitian matrices.
 
-\subsection{Special Phenomena}
+\subsection{C. Special Phenomena}
 The two main special phenomena that occur in the quantum world but not in the classical world are superposition and entanglement. Superposition was mentioned above where it was 
 describing the ability of qubits to be in both state $\ket{0}$ and $\ket{1}$ simultaneously. It may be tempting to think of this state as a representation of knowledge of a system, 
 meaning the qubit has some definite state but the observer simply does not know which and thus represents it probabilistically, just as a flipped coin has a 50 percent chance of 
@@ -147,7 +147,7 @@ are $\ket{00}$ or $\ket{11}$ but prior to measuring, there is no way to determin
 of measured results between qubits that seem inherently random that Einstein referred to as “spookiness at a distance” since qubits manage to always coordinate their respective behaviors 
 no matter how far apart they are from each other.
 
-\subsection{Quantum Algorithms}
+\subsection{D. Quantum Algorithms}
 In the classical world, computers manage bits (0 and 1) which are acted on by classical gates such as AND, XOR, and NOT. In the quantum world, quantum computers manage qubits which are 
 acted on by quantum gates such as Hadamard and controlled-NOT. In the classical world, a series of gates can be put together in a defined procedure called an algorithm that is able to 
 solve a specific problem. The same is true in the quantum computing world. However, there are only some specific problems for which a quantum algorithm can solve faster than a classical 
@@ -156,8 +156,8 @@ Famous examples of algorithms that provide a quantum advantage include Deutch's 
 algorithm, and Shor's algorithm. Quantum machine learning introduces algorithms that can be learned in order to solve new sets of problems and aims to use the power of quantum for a 
 performance advantage or uncover solutions not reachable classically.
 
-\section{QML Overview}
-\subsection{Domains}
+\section{III. QML Overview}
+\subsection{A. Domains}
 The field of quantum machine learning can be broken down into four areas of research depending on whether the data is classical or quantum and whether the algorithms are run on a classical 
 computer or a quantum computer. This paper only covers the classical data and quantum algorithms area (CQ), which uses quantum algorithms to efficiently solve machine learning problems for 
 classical datasets. However, the other three areas shown in Figure 1 are classical data and classical algorithms (CC) which focuses on quantum inspired classical algorithms, 
@@ -172,7 +172,7 @@ quantum variational autoencoders \autocite{khoshaman2018quantum}, and quantum ge
 	\label{fig:qmldomains}
 \end{figure}
 
-\subsection{Core Components of QML}
+\subsection{B. Core Components of QML}
 Regardless of the machine learning task, there are three core components that are part of every QML implementation. The first of which is the data encoding step. Just as data is encoded in 
 binary on a classical computer, the data being processed must first be encoded and loaded onto a quantum computer in order to be processed by a quantum algorithm. One such method is called 
 basis encoding. Given a quantum computer with N qubits, flipping each qubit to be $\ket{0}$ or $\ket{1}$ allows for the encoding of an N-bit binary string, i.e. 01011. Using the quantum 
@@ -232,11 +232,11 @@ to the original quantum state. Figure \ref{fig:qmlgencircuit} illustrates a gene
 	\label{fig:qmlgencircuit}
 \end{figure}
 
-\section{Quantum Kernels}
+\section{IV. Quantum Kernels}
 Of all the possible quantum models listed in the section above, this paper takes a deep dive into quantum kernels because they are of particular interest for several reasons. The first of which 
 is that they have demonstrated some of the most practical success and proven advantage compared to other quantum machine learning models \autocite{liu2021rigorous}. Studying these tools in 
 particular should help in identifying and understanding what particular aspects of them contribute towards their success. The second reason is that Schuld makes an astute observation and 
-demonstrates in \autocite{schuld2021supervised} that all supervised quantum machine learning models are actually quantum methods. Therefore, if all quantum models can be rephrased as quantum kernel methods, 
+demonstrates in \autocite{schuld2021supervised} that all supervised quantum machine learning models are actually quantum kernel methods. Therefore, if all quantum models can be rephrased as quantum kernel methods, 
 then it makes sense to start an investigation of the quantum advantage there. The last reason for a deep dive into quantum kernels is that they most simply and plainly utilize quantum computers 
 for their most essential feature: the Hilbert space. When comparing different types of successful quantum algorithms such as variational quantum algorithms versus Shor's and Grover's, there are 
 some notable dissimilarities. For example, Shor's and Grover's have a solution-finding method built into their procedures that results in the correct solution(s) being measured at the end of 
@@ -276,7 +276,7 @@ datapoint pairs within a dataset, this can be passed to classical machine learni
 	\label{fig:quantumkernel}
 \end{figure}
 
-\section{Analysis of the Quantum Feature Space}
+\section{V. Analysis of the Quantum Feature Space}
 The inspiration for this paper comes from the work presented in \autocite{suzuki2020analysis} which analyzes feature maps for a quantum kernel based classifier. In this work, there are four 
 datasets being investigated, which are named circles, moons, exponential, and xor and shown in Figure \ref{fig:datasets}. The two-dimensional data points have an assigned class label of either 
 0 or 1 and the paper analyzes and compares the success of different quantum feature maps used in a quantum kernel based classifier model. The ultimate goal of the authors was to develop a 
@@ -286,29 +286,27 @@ looked at are listed in Table \ref{tab:featuremaps} and the feature map circuit 
 which to screen candidate feature maps, the most impactful piece was their work in representing and visualizing the quantum feature space. Despite focusing on the simple two qubit case, 
 crucial insight was gained into what is behind the success of quantum algorithms.
 
-\begin{figure*}
+\begin{figure}
 	\includegraphics[width=\linewidth]{datasets.png}
 	\caption{The toy datasets analyzed.}
 	\label{fig:datasets}
-\end{figure*}
+\end{figure}
 
-\begin{table*} % Full width table (notice the starred environment)
+\begin{table} % Full width table (notice the starred environment)
 	\caption{Feature maps analyzed.}
 	\centering % Horizontally center the table
 	\renewcommand{\arraystretch}{2}
-	\begin{tabular}{L{0.12\linewidth} | L{0.1\linewidth} L{0.1\linewidth} R{0.15\linewidth}}
-		\cmidrule(r){1-2}
+	\begin{tabular}{L{0.12\linewidth} | L{0.05\linewidth} L{0.05\linewidth} R{0.35\linewidth}}
 		Feature Map & $\phi_1(\vec{x})$ & $\phi_2(\vec{x})$ & $\phi_{1,2}(\vec{x})$ \\
 		\midrule
 		1 & $x_1$ & $x_2$ & $\pi x_1 x_2$ \\
 		2 & $x_1$ & $x_2$ & $\frac{\pi}{2}(1-x_1)(1-x_2)$ \\
-		3 & $x_1$ & $x_2$ & $exp(\frac{|x_1 - x_2|^2}{8/ln(\pi)})$ \\
+		3 & $x_1$ & $x_2$ & $exp(\frac{|x_1-x_2|^2}{8/ln(\pi)})$ \\
 		4 & $x_1$ & $x_2$ & $\frac{\pi}{3cos(x_1)cos(x_2)}$ \\
 		5 & $x_1$ & $x_2$ & $\pi cos(x_1)cos(x_2)$ \\
-		\bottomrule
 		\label{tab:featuremaps}
 	\end{tabular}
-\end{table*}
+\end{table}
 
 \begin{figure}
 	\includegraphics[width=\linewidth]{fm1.png}
@@ -316,7 +314,7 @@ crucial insight was gained into what is behind the success of quantum algorithms
 	\label{fig:fm1}
 \end{figure}
 
-\subsection{Pauli Decomposition and Quantum Feature Space Visualizations}
+\subsection{A. Pauli Decomposition and Quantum Feature Space Visualizations}
 The minimum training accuracy score that the authors compute in \autocite{suzuki2020analysis} requires first classically calculating the data encoded quantum states for each data point in the 
 dataset. This quantum state is the result of encoding a given data point by a specific quantum feature map. These quantum states, represented in their density matrix form, are then expanded as 
 a linear combination of basis states known as the Pauli operators. Just as the unit vectors along the x-, y-, and z-axes form the basis states of the $R^3$ space, the set of Pauli operators 
@@ -369,7 +367,7 @@ machine learning works fundamentally similar to classical machine learning.
 	\label{fig:heatmap5}
 \end{figure}
 
-\subsection{Minimum Training Accuracy}
+\subsection{B. Minimum Training Accuracy}
 While the colormaps described above are extremely illustrative in understanding quantum kernels, they are not a practice tool for screening feature maps because 1, they require many 
 computations for the entire grid of $x_1, x_2 \in [-1, 1]$ and 2, they're qualitative nature makes them difficult to analyze. Therefore, the authors in \autocite{suzuki2020analysis} propose 
 a minimum accuracy calculation that can aid in feature map screening for a given problem dataset. This method utilizes the 16-dimensional quantum dataset and applies a worse-case scenario, 
@@ -422,7 +420,6 @@ section looks at extending this work for more efficient ways to screen candidate
 		3 & 97.0\% & 89.3\% & 70.0\% & 91.2\%\\
 		4 & 97.3\% & 85.3\% & 85.3\% & 87.2\%\\
 		5 & 97.3\% & 83.5\% & 88.3\% & 85.7\%\\
-		\bottomrule
 		\label{tab:testaccs}
 	\end{tabular}
 \end{table}
@@ -444,13 +441,12 @@ section looks at extending this work for more efficient ways to screen candidate
 		3 & ZZ(21), ZI(5), IZ(3) & ZX(19), YZ(6), IY(4) & XI(12), XZ(6), IY(5) & YX(11), XY(6), ZI(5)\\
 		4 & ZI(29), IZ(1) & IY(21), XI(5), YI(1) & XI(18), IY(7), ZY(4) & YX(13), XY(7), XI(5)\\
 		5 & ZI(29), IZ(1) & IY(7), ZX(6), XI(6) & IY(9), ZX(8), XZ(4) & YX(15), XY(7), IX(3)\\
-		\bottomrule
 		\label{tab:bestaxes}
 	\end{tabular}
 \end{table*}
 
-\section{Efficient Quantum Kernel Screening}
-\subsection{Random Feature Selection}
+\section{VI. Efficient Quantum Kernel Screening}
+\subsection{A. Random Feature Selection}
 The most computationally intensive part of the minimum training accuracy score is the requirement of computing the coefficients for all 16 axes for the entire dataset. A more efficient screening 
 technique will not require each dimension for each datapoint to be computed and therefore, this paper looks at two methods of reducing the number of computations. The first of which is random 
 selection and attempts to estimate the minimum accuracy by randomly selecting a subset of the 16 Pauli axes for batches of data. Due to the small dataset size (100 in total with each cross-fold 
@@ -480,7 +476,6 @@ performing the best for the moons dataset but the actual minimum accuracy scores
 		3 & 98.7\% & 95.3\% & 95.3\% & 93.0\%\\
 		4 & 99.7\% & 91.7\% & 91.2\% & 91.0\%\\
 		5 & 100.0\% & 94.0\% & 93.3\% & 92.7\%\\
-		\bottomrule
 		\label{tab:rsresults}
 	\end{tabular}
 \end{table}
@@ -498,12 +493,11 @@ performing the best for the moons dataset but the actual minimum accuracy scores
 		3 & 100 & 100 & 100 & 100\\
 		4 & 100 & 100 & 100 & 100\\
 		5 & 100 & 100 & 100 & 100\\
-		\bottomrule
 		\label{tab:rsevals}
 	\end{tabular}
 \end{table}
 
-\subsection{Adaptive Feature Selection}
+\subsection{B. Adaptive Feature Selection}
 The next proposed method is designed to use computation resources in a smarter way by implementing an adaptive feature selection process. This method processes the data in pairs of balanced 
 data points (one from class 0 and one from class 1). Starting with 4 data points, it computes the accuracies of the best hyperplane along each of the 16 Pauli axes and then selects the 
 best subset of axes. Then, it will process the next two data points and compute the accuracies of those 6 data points along the subset of previously selected Pauli axes. It keeps repeating 
@@ -546,7 +540,6 @@ is that the number of computations, having a dynamic nature, cannot be easily es
 		3 & 100.0\% & 95.0\% & 93.3\% & 914\%\\
 		4 & 100.0\% & 89.2\% & 93.3\% & 87.8\%\\
 		5 & 100.0\% & 87.8\% & 93.1\% & 86.7\%\\
-		\bottomrule
 		\label{tab:asresults}
 	\end{tabular}
 \end{table}
@@ -564,11 +557,29 @@ is that the number of computations, having a dynamic nature, cannot be easily es
 		3 & 95.93 & 93.60 & 90.67 & 84.80\\
 		4 & 101.20 & 88.33 & 82.87 & 86.86\\
 		5 & 101.40 & 90.27 & 87.93 & 85.40\\
-		\bottomrule
 		\label{tab:asevals}
 	\end{tabular}
 \end{table}
 
+\section{VII. Discussion and Conclusion}
+In section VA, sets of 16 heatmaps illustrate the quantum feature space for all five feature map studied and extension on work done by other authors show that datasets are classified more easily 
+when the quantum kernel based classifier models use a feature map that posses similar patterns. This paper identified the exact Pauli axes that best linearly separate the data which allowed for 
+the drawing of connection between quantum machine learning and classical machine learning. That is, a feature map that models our data well in the high-dimensional Hilbert space is able to perform 
+better for classification. Thus, identifying the most ideal feature map through either candidate screening or kernel alignment (not discussed in this paper) involves finding a quantum function 
+that best fits a given dataset. While it is comforting to see this familiar machine learning task apply to QML, it also naturally raises the question of whether QML has the same challenges as 
+ML in these tasks. For instance, in variational quantum algorithms, the problem of barren plateaus also exist.
+
+There is an inherit advantage for QML by having access to the Hilbert space and allowing for efficient computations in this high-dimiension space. But does the quantum advantage exist partially 
+due to a larger collection of quantum functions to select from compared to classical functions? Or does a quantum advantage come from the ability to find these quantum functions that model a 
+problem dataset more efficiently than classical algorithms are able to find functions that best fit data? QML only has a potential at outperforming classical ML when functions are difficult to 
+compute classically but are natural quantumly. But in those cases when QML does outperform classical ML, there isn't a clear explanation as to where the performance gain comes from. 
+
+In evaluating when and where to use quantum technology for a machine learning task, there are a few aspects to consider. One of which is quantum algorithms are a natural fit for studying quantum 
+systems and some optimization problems that can be casted to Hamiltonians. However, quantum computers have a limitation in their ability to process big data. Data encoding tends to be a very 
+inefficient step and with only a relatively small number of qubits that can be used with some limitation in the connection topography that can lead to decoupling and noise, quantum computers 
+currently do best solving high compute but low data size problems. Therefore, it is the opinion of the reader that in the current state of knowledge, there is a fair balance between the advantages 
+and disadvantages to quantum machine learning that make it not a clear winning technology in general. Instead, there is expected to specific use cases for which it will perform well and hopefully 
+future research on the performance advantage can inspire new classical algorithms as well as identify more use cases for quantum computing with focus on how to map these as quantum problems. 
 %----------------------------------------------------------------------------------------
 %	 REFERENCES
 %----------------------------------------------------------------------------------------
