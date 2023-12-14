@@ -132,6 +132,36 @@ def compute_accuracy(labels_ordered: np.ndarray, threshold_idx: int) -> float:
     return (1/n)*(max(n_plus, n_minus) + (n/2)  - min(n_plus,  n_minus))
 
 
+def get_all_accuracies(quantum_ds: np.ndarray, labels: np.ndarray) -> np.ndarray:
+    """
+    Given a quantum dataset and the associated classification labels, computes the
+    best accuracy score for the optimal hyperplane on each axis of the dataset.
+
+    Args:
+        quantum_ds (np.ndarray): quantum dataset
+        labels (np.ndarray): classification labels
+
+    Returns:
+        np.ndarray: best accuracy scores for each axis in the dataset
+    """
+    # Allocate space for accuracies
+    accuracies = np.empty((quantum_ds.shape[1], ))
+
+    # There are N + 1 hyperplanes to test
+    num_hyperplanes = quantum_ds.shape[0] + 1
+
+
+    # Loop through each axis of the dataset and compute accuracy of optimal hyperplane
+    for axis in range(quantum_ds.shape[1]):
+
+        # Loop through potential hyperplanes (linear boundaries) and compute accuracy
+        labels_ordered = np.take(labels, np.argsort(quantum_ds[:, axis].squeeze()))
+        best_acc = max([compute_accuracy(labels_ordered, threshold_idx=k) for k in range(num_hyperplanes)])
+        accuracies[axis] = best_acc
+    
+    return accuracies
+
+
 def compute_pauli_decomposition(ds: np.ndarray, feature_map: PauliFeatureMap, axes: Union[int, List[int]]) -> np.ndarray:
     """
     Given a dataset of shape (M x N) where M is the number of samples and

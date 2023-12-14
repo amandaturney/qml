@@ -2,6 +2,8 @@ import numpy as np
 import scipy.stats as ss
 import sklearn.datasets
 from sklearn.preprocessing import MinMaxScaler
+from qiskit.utils import algorithm_globals
+from qiskit_machine_learning.datasets import ad_hoc_data
 from sklearn.model_selection import train_test_split
 
 from typing import Callable, Dict, List, Optional, Tuple
@@ -152,7 +154,36 @@ def _make_moons(n_samples: int, seed: int, shuffle: bool = True) -> Tuple[np.nda
     return X_scaled, y
 
 
-def make_datasets(n_samples: int, training_pct: Optional[float] = None, seed: Optional[int] = None) -> Dict:
+def _sort_data(X: np.ndarray,  y: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Sort data such that the labels alternating. For example, the labels of datapoints
+    x1, x2, x3, and x4 will be 0, 1, 0, 1. This is useful in ensuring data is randomly
+    distributed initially and that subsets are balanced.
+
+    Args:
+        X (np.ndarray): 2-dimensional X data
+        y (np.ndarray): 1-dimensional array of labels (0 and 1)
+
+    Returns:
+        Tuple[np.ndarray, np.ndarray]: sorted X and y arrays
+    """
+    # Get the indices of the class 0 datapoints and the class 1 datapoints
+    class_0_idxs = np.where(y == 0)[0]
+    class_1_idxs = np.where(y == 1)[0]
+
+    # Interleave them together
+    reindexed = [*sum(zip(class_0_idxs, class_1_idxs),())]
+
+    # Reassign the reindexes/reordered datapoints
+    X_sorted = X[reindexed, :]
+    y_sorted = y[reindexed]
+
+    return X_sorted, y_sorted
+
+
+def make_datasets(
+        n_samples: int, training_pct: Optional[float] = None, seed: Optional[int] = None
+    ) -> Dict:
     """
     Creates the 4 datasets (circles, moons, exp, and xor) which consist of n_samples of 2-dimensional X data
     and the corresponding binary classification labels as y. If `training_pct` is None, X and y data is
@@ -201,4 +232,72 @@ def make_datasets(n_samples: int, training_pct: Optional[float] = None, seed: Op
             'xor': {'train': {'X': x_X_train, 'y': x_y_train}, 'test': {'X': x_X_test, 'y': x_y_test}}
         }
 
+    # Sort the datapoints
+    for dataset in ds.keys():
+        # Get number of subsets of data to loop through
+        subsets = ['train', 'test'] if training_pct is not None else ['--']
+
+        for subset in subsets:
+            data_ptr = ds[dataset][subset] if training_pct is not None else ds[dataset]
+            data_ptr['X'], data_ptr['y'] = _sort_data(data_ptr['X'], data_ptr['y'])
+
+
     return ds
+
+
+def make_adhoc_dataset(
+        n_samples: int,
+        training_pct: Optional[float] = None,
+        cv_num: Optional[int] = None,
+        seed: Optional[int] = None
+    ) -> Dict:
+    """
+    Generates a dataset that samples from a ZZ Feature Map distribution.
+
+    Args:
+        n_samples (int): number of samples to generate from each dataset distribution
+        training_pct (Optional[float], optional): Training/test split percentage. Defaults to None.
+        cv_num: (Optional[int], optional): Number of cross fold validations. Defaults to None.
+        seed (Optional[int], optional): Random seed for the data sampling. Defaults to Optional[int]=None.
+
+    Returns:
+        Dict: dataset
+    """
+    # Set random seed first
+    algorithm_globals.random_seed = seed
+
+    # Get all data at once and then split for each cross-fold validation
+    train_data, train_labels, test_data, test_labels = ad_hoc_data(
+        training_size=int(n_samples*training_pct*0.5)*cv_num,
+        test_size=int(n_samples*(1-training_pct)*0.5)*cv_num,
+        n=2,
+        gap=0.3,
+        one_hot=False
+    )
+
+    # Standardize data
+    train_data = np.clip(train_data/np.pi - 1, a_min=-0.999, a_max=0.999)
+    test_data = np.clip(test_data/np.pi - 1, a_min=-0.999, a_max=0.999)
+
+    # Sort data so the data labels are alternating.
+    train_data, train_labels = _sort_data(train_data, train_labels)
+    test_data, test_labels = _sort_data(test_data, test_labels)
+
+    # Split into groups for each cross-fold validation if needed
+    if cv_num is not None:
+        train_data = np.split(train_data, cv_num)
+        train_labels = np.split(train_labels, cv_num)
+        test_data = np.split(test_data, cv_num)
+        test_labels = np.split(test_labels, cv_num)
+    
+    
+    if training_pct is None:
+        ds = {'X': train_data, 'y': train_data}
+    else:
+        ds = {
+            'train': {'X': train_data, 'y': train_labels},
+            'test': {'X': test_data, 'y': test_labels}
+        }
+
+    return ds
+
