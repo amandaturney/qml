@@ -19,6 +19,7 @@ networkx = "^3.1"
 qiskit-optimization = "^0.5.0"
 xarray = "^2023.10.1"
 qiskit-algorithms = "^0.2.1"
+pillow = "10.2.0"
 
 
 [build-system]
